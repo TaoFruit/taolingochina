@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------------
 
     Template Name: TaoLingo - Learn English Online
-    Template URI: https://devitems.com/html/education-preview/
+    Template URI: https://taofruit.com/html/education-preview/
     Description: This is html5 template
     Author: HasTech
-    Author URI: https://devitems.com/
+    Author URI: https://taofruit.com/
     Version: 1.0
 
 -----------------------------------------------------------------------------------
@@ -2863,4 +2863,33 @@ textarea {
     background-color: #EC1C23;
     border: 1px solid #EC1C23;
     color: #fff;
+}
+
+
+/* KRASHNIK */ 
+object{
+	pointer-events: none;
+}
+#loadOverlay{display: none;}
+
+.button-box .default-btn2 {
+    background-color: #EC1C23;
+    border: 1px solid #EC1C23;
+    color: #fff;
+    border: 1px solid #EC1C23;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 40px;
+    margin: 40px 20px;
+    padding: 8px 15px 8px 10px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+}
+
+.button-box .default-btn2:hover {
+    background-color: #fff;
+    border: 1px solid #EC1C23;
+    color: #EC1C23;
 }
