@@ -2872,7 +2872,7 @@ object{
 }
 #loadOverlay{display: none;}
 
-.button-box .default-btn2 {
+.button-box .default-btn-red {
     background-color: #EC1C23;
     border: 1px solid #EC1C23;
     color: #fff;
@@ -2881,15 +2881,38 @@ object{
     color: #fff;
     font-size: 14px;
     margin-top: 40px;
-    margin: 40px 20px;
+    /* margin: 40px 20px; */
     padding: 8px 15px 8px 10px;
     text-transform: uppercase;
     -webkit-transition: all 0.5s ease 0s;
     transition: all 0.5s ease 0s;
 }
 
-.button-box .default-btn2:hover {
+.button-box .default-btn-red:hover {
     background-color: #fff;
     border: 1px solid #EC1C23;
     color: #EC1C23;
+}
+
+
+.button-box .default-btn-white {
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #EC1C23;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    color: #EC1C23;
+    font-size: 14px;
+    margin-top: 40px;
+    /* margin: 40px 20px; */
+    padding: 8px 15px 8px 10px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+}
+
+.button-box .default-btn-white:hover {
+    background-color: #EC1C23;
+    border: 1px solid #fff;
+    color: #fff;
 }
