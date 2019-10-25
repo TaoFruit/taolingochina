@@ -25,6 +25,7 @@
         <meta name="msapplication-TileImage" content="img/icon/fav/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
         <!-- Place favicon.ico in the img/icon/fav directory -->
+        <script src="js/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/animate.css">
@@ -648,10 +649,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form enctype='application/json' class="pr-4 pl-4 pb-4" id="contactform" action="https://prod-20.eastus.logic.azure.com:443/workflows/a8bed9230a7445338ffbbecaa103ec67/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tz8jPn70VwbD7XM6aZw6T2gNB_sxAutBWp5I-hKv6cA" method="post">
+                        <form enctype="application/json" class="pr-4 pl-4 pb-4" id="register" action="https://prod-20.eastus.logic.azure.com:443/workflows/a8bed9230a7445338ffbbecaa103ec67/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tz8jPn70VwbD7XM6aZw6T2gNB_sxAutBWp5I-hKv6cA" method="post">
                             <input type="hidden" name="test" value="off">
                             <input type="hidden" name="owner" value="76986198-30f2-e911-a972-000d3a34e213">
-                            <input type="hidden" name="website" value="Tao Lingo">
+                            <input type="hidden" name="website" value="Tao Lingo China">
                             <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                             <input type="text" name="_gotcha" style="display:none" />
                             <div class="row text-center">
@@ -707,15 +708,13 @@
                             </div>
                             <div class="form-group text-center">
                                     <div id="js-contact-result" data-success-msg="Success, Please check your email." data-error-msg="Oops! Something went wrong"></div>
-                                    <button type="button" class="btn default-btn">立即领取</button>
+                                    <button type="submit" class="btn default-btn">立即领取</button>
                             </div><!-- // end .form-group -->
                         </form> 
                     </div>
                 </div>
             </div>
         </div>
-
-
         <script src="js/vendor/jquery-1.12.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.meanmenu.js"></script>
@@ -726,5 +725,52 @@
         <script src="js/jquery.nicescroll.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+
+        <script src="js/jquery.validate.js"></script>
+        <script>
+            $("#register").validate();
+            $("#register").submit(function(event){
+            if (!$("#register").validate().form()) {
+            return false; //doesn't validate
+            }else
+            {
+            event.preventDefault(); //prevent default action 
+            var post_url = $(this).attr("action"); //get form action url
+            var request_method = $(this).attr("method"); //get form GET/POST method
+            var content_type = $(this).attr("enctype"); //get form GET/POST method
+            var form_data = $(this).serialize(); //Encode form elements for submission
+            
+            $.ajax({
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        $("#register")[0].reset();
+                        $("input:checkbox").attr('checked', false);
+                        Swal({
+                        title: '<strong>Submission Successful</strong>',
+                        type: 'success',
+                        html:
+                            'We received your request. A representative will get in touch soon!',
+                        showCloseButton: true,
+                        focusConfirm: false,
+                        confirmButtonText:
+                            '<a style="color: white" href="courses.html"><i class="fa fa-address-card"></i> Go to Courses</a>',
+                        confirmButtonAriaLabel: 'Go to Courses',
+                    });
+                        console.log('Submission was successful.');
+                        console.log(data);   
+                    },
+                    error: function (data) {
+                        console.log('An error occurred.');
+                        console.log(data);
+                    },
+                }).then(function(response){ //
+                $("#server-results").html(response);
+            }); //form is validated do your work
+            }        
+        });
+        </script>
+
     </body>
 </html>
